@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OTP Verification</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f7;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 30px auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+      }
+      .header {
+        background-color: #4caf50;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px 8px 0 0;
+        font-size: 24px;
+      }
+      .content {
+        padding: 20px;
+        text-align: center;
+      }
+      .otp-box {
+        background-color: #f1f1f1;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 22px;
+        font-weight: bold;
+        display: inline-block;
+        letter-spacing: 4px;
+        margin: 20px 0;
+      }
+      .footer {
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">OTP Verification</div>
+      <div class="content">
+        <p>Hi,</p>
+        <p>Use the following One-Time Password (OTP) to complete your password reset process. This OTP is valid for <strong>10 minutes</strong>.</p>
+        <div class="otp-box">{{OTP}}</div>
+        <p>If you didn’t request this, you can ignore this email.</p>
+      </div>
+      <div class="footer">
+        &copy; 2025 Your Company Name. All rights reserved.
+      </div>
+    </div>
+  </body>
+</html>
