@@ -1,19 +1,55 @@
 # 📚 Social Shelf
 
-> A modern, full-featured library management platform built with Next.js 15, enabling seamless book rentals, donations, events, and community engagement.
+> A scalable web-based platform designed to facilitate **book sharing**, **donations**, and **volunteer coordination** within communities. The system streamlines user engagement while providing administrators with powerful management and monitoring tools.
 
 ## ✨ Features
 
 ### 🎯 Core Functionality
-- **Book Management** - Browse, search, and manage an extensive book catalog
-- **Book Rentals** - Rent books with automated tracking and return management
-- **Donations** - Accept book donations from the community
-- **Event Management** - Create, manage, and register for library events
-- **User Authentication** - Secure authentication with NextAuth.js
-- **Admin Dashboard** - Comprehensive admin panel for managing users, books, events, and rentals
-- **Contact & Feedback** - User feedback and contact form system
-- **Gallery** - Showcase library events and activities
-- **Volunteer Program** - Register and manage volunteer opportunities
+## 📚 Book Sharing & Volunteer Coordination Platform
+
+A scalable web-based platform designed to facilitate **book sharing**, **donations**, and **volunteer coordination** within communities. The system streamlines user engagement while providing administrators with powerful management and monitoring tools.
+
+### ✨ Key Features
+- **User Management**
+  - Secure user registration, authentication, and role-based access
+  - Profile management for donors, volunteers, and recipients
+
+- **Book Sharing & Donations**
+  - List, request, and donate books
+  - Track donation status and history
+
+- **Volunteer Coordination**
+  - Volunteer registration and task assignment
+  - Activity tracking and participation management
+
+- **Admin Dashboard**
+  - Centralized control for users, donations, and volunteers
+  - Analytics and system monitoring
+
+- **Real-Time Alerts**
+  - Notifications for donation updates, requests, and assignments
+  - Event-based alerts for admins and users
+
+- **Surveys & Feedback**
+  - Built-in survey tools to collect user feedback
+  - Data-driven insights for platform improvement
+
+### 🔐 Security & Scalability
+- Secure authentication and authorization mechanisms
+- Optimized backend APIs for high performance
+- Efficient database schema design to ensure scalability
+- Data validation and protection against common vulnerabilities
+
+### 🛠️ Technical Highlights
+- Modular backend architecture
+- RESTful API design
+- Optimized database queries for performance
+- Scalable and maintainable codebase
+
+### 🚀 Use Cases
+- Community-driven book sharing initiatives
+- NGO and non-profit donation management
+- Volunteer-driven educational programs
 
 ### 🎨 User Experience
 - **Dark/Light Mode** - Theme toggle with next-themes
