@@ -1,3 +1,4 @@
+"use strict";
 import React, { useState } from "react";
 import { Button } from "./button";
 import { useSession } from "next-auth/react";
