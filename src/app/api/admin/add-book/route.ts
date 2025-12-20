@@ -1,7 +1,6 @@
 import { ConnectDB } from "@/dbConfig/dbConfig";
 import Book from "@/models/Book.model";
 import BookId from "@/utils/BookId";
-import { MongooseError } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {

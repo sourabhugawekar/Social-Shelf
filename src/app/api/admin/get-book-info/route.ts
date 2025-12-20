@@ -24,8 +24,8 @@ export async function GET() {
       },
       bookArray,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Book fetching error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error : error instanceof Error ? error.message : "An  Error Occured !" }, { status: 500 });
   }
 }

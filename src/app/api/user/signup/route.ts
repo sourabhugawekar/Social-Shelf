@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
       success: true,
       savedUser,
     });
-  } catch (error:any) {
+  } catch (error) {
     console.error("Registration error:", error);
     return NextResponse.json({error: error instanceof Error ? error.message : "An Error Occured !"}, {status: 500})
 

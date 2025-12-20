@@ -3,7 +3,7 @@ import nodemailer,{SentMessageInfo} from "nodemailer";
 
 export const sendMail = async (emailId:string, mailSubject:string, mailText:string) => {
   // transporter
-  let transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: process.env.GMAIL_ADDRESS,
@@ -15,7 +15,7 @@ export const sendMail = async (emailId:string, mailSubject:string, mailText:stri
     connectionTimeout: 10000,
   });
   // mailOptions Object
-  let mailOptions = {
+  const mailOptions = {
     from: process.env.GMAIL_ADDRESS,
     to: emailId,
     subject: mailSubject,

@@ -1,18 +1,20 @@
 "use client";
 
+import {
+  BarChart,
+  BookOpen,
+  Gift,
+  LayoutDashboard,
+  PlusCircle,
+  Settings,
+  Upload,
+  Users,
+} from "lucide-react";
+import Image from "next/image";
 import React, { useState } from "react";
 import { Button } from "../ui/button";
-import { books } from "../ui/Temp";
-import {
-  LayoutDashboard,
-  BookOpen,
-  PlusCircle,
-  Gift,
-  Users,
-  Settings,
-  BarChart,
-  Upload,
-} from "lucide-react";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 import {
   Table,
   TableBody,
@@ -21,10 +23,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-import Image from "next/image";
-import { IBook } from "@/models/Book.model";
+import { books } from "../ui/Temp";
 
 const Admin = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -184,7 +183,8 @@ const Admin = () => {
                           <TableCell>{book.category}</TableCell>
                           <TableCell>
                             <div className="flex items-center space-x-2">
-                              <span>{book.stock || 0}</span>
+                              <span> NA </span> 
+                              {/* <span>{book.stock || 0}</span>  */}
                             </div>
                           </TableCell>
                           <TableCell>

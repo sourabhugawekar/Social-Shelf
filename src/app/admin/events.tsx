@@ -70,7 +70,7 @@ export default function Events() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      console.log(newEvent);
+      console.log(newEvent,imageUrl);
       const response = await axios.post("/api/admin/add-event", newEvent);
       if (response.data.success) {
         Swal.fire({

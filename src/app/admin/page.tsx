@@ -199,7 +199,7 @@ export default function Admin() {
 
   const HandleCoverImage = (response: IKUploadResponse) => {
     try {
-      console.log(response);
+      console.log(response,selectedImage);
       setImagePreview(response.url);
       setCoverImageUrl(response.url);
     } catch (error) {
