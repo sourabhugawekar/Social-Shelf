@@ -49,7 +49,7 @@ export default function Feedback({ feedbackArray }: FeedbackProps) {
                   <TableCell>{feed.email}</TableCell>
                   <TableCell>{feed.phoneno}</TableCell>
                   <TableCell>{feed.message}</TableCell>
-                  <TableCell>{feed.createdAt}</TableCell>
+                  <TableCell>{feed.createdAt?.toLocaleString()}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
