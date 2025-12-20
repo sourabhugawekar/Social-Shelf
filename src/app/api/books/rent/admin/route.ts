@@ -32,11 +32,11 @@ export async function GET(req: NextRequest) {
       success: true,
       rentedBooks: formattedBooks,
     });
-  } catch (error: unknown) {
+  } catch (error) {
     console.error("Error fetching rented books:", error);
     return NextResponse.json(
-      { error: "Failed to fetch rented books" },
-      { status: 500 }
-    );
+      { error:error instanceof Error ?  error.message || "Error fetching rented books !" : "An error Occured " },
+      {status:500}
+    )
   }
 }

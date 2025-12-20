@@ -64,10 +64,10 @@ export async function POST(request: Request) {
       success: true,
       book,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error adding donated book:", error);
     return NextResponse.json(
-      { error: error.message || "Error adding book" },
+      { error:error instanceof Error ?  error.message || "Error adding book" : "An error Occured " },
       { status: 500 }
     );
   }

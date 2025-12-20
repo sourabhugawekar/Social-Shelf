@@ -23,6 +23,8 @@ import {
 } from "../ui/table";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import Image from "next/image";
+import { IBook } from "@/models/Book.model";
 
 const Admin = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -285,7 +287,7 @@ const Admin = () => {
                       >
                         <div className="flex flex-col items-center justify-center pt-5 pb-6">
                           {imagePreview ? (
-                            <img
+                            <Image
                               src={imagePreview}
                               alt="Preview"
                               className="max-h-36 object-contain"

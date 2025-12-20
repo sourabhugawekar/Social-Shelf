@@ -5,7 +5,7 @@ export interface IOTP {
   email: string;
   otp: string;
   expiredIn?: Date;
-  isUsed: Boolean;
+  isUsed: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }

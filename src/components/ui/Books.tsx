@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import { Button } from "./button";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
+import Image from "next/image";
 
 interface Book {
   bookId: string;
   title: string;
   author: string;
   category: string;
-  imageUrl?: string;
+  imageUrl: string | "";
   stock: number;
 }
 
@@ -98,7 +99,7 @@ const Books = ({ bookArray }: BooksProps) => {
                 aria-label={book.title}
                 className="relative block overflow-hidden group"
               >
-                <img
+                <Image
                   alt={`${book.title} cover`}
                   className="object-cover w-full h-64 transition-transform duration-300 group-hover:scale-105"
                   src={book.imageUrl}

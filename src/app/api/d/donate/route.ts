@@ -8,9 +8,12 @@ export async function GET() {
     await ConnectDB();
     const donatedBooks = await Donate.find().sort({ createdAt: -1 });
     return NextResponse.json({ donatedBooks });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error fetching donated books:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message || "Error Fetching Donated Books !" : "An error Occured " },
+      { status: 500 }
+    )
   }
 }
 
@@ -42,8 +45,11 @@ export async function POST(request: NextRequest) {
       success: true,
       bookDonated,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Registration error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { error:error instanceof Error ?  error.message || "Registration error" : "An error Occured " },
+      {status:500}
+    )
   }
 }

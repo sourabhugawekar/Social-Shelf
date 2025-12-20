@@ -22,6 +22,7 @@ import Swal from "sweetalert2";
 import { books } from "../../components/ui/Temp";
 import { Upload } from "lucide-react";
 import FileUpload from "../../components/layouts/FileUpload";
+import Image from "next/image";
 
 interface Book {
   _id: string;
@@ -274,7 +275,7 @@ export default function Allbooks({ bookArray }: BooksProps) {
                 >
                   {imagePreview ? (
                     <div className="relative w-full h-full group">
-                      <img
+                      <Image
                         src={imagePreview}
                         alt="Preview"
                         className="w-full h-full object-cover rounded-lg"

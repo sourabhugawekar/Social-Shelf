@@ -28,8 +28,10 @@ export async function DELETE(request: Request) {
       success: true,
       deletedBook,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Book deletion error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message || "Error Deleting book" : "An error Occured " }
+      ,{ status: 500 });
   }
 }

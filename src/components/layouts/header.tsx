@@ -1,11 +1,5 @@
 "use client";
 
-import classNames from "classnames";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { navigationLinks } from "./constants";
-import MobileNav from "./mobile-nav";
-import { ModeToggle } from "./modeToggle";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,12 +7,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { signOut, useSession } from "next-auth/react";
-import { Button } from "../ui/button";
-import { useEffect, useState } from "react";
 import axios from "axios";
-import { User, LogOut, Settings, UserCircle } from "lucide-react";
+import classNames from "classnames";
+import { LogOut, User, UserCircle } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
+import { navigationLinks } from "./constants";
+import MobileNav from "./mobile-nav";
+import { ModeToggle } from "./modeToggle";
 
 export default function Header() {
   const pathName = usePathname();

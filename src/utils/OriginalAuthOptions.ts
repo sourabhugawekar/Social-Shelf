@@ -1,13 +1,12 @@
-import type { DefaultSession, NextAuthConfig} from "next-auth";
-import type { JWT } from "next-auth/jwt";
+import { ConnectDB } from "@/dbConfig/dbConfig";
+import UserModel from "@/models/user.models";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import bcrypt from "bcryptjs";
+import type { DefaultSession, NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import bcrypt from "bcryptjs";
-import { ConnectDB } from "@/dbConfig/dbConfig";
-import UserModel from "@/models/user.models";
 import clientPromise from "./mongodb";
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 
 declare module "next-auth" {
   interface Session extends DefaultSession {

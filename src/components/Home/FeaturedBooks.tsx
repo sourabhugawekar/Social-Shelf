@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 interface Book {
   _id: string;
@@ -36,7 +37,7 @@ export default function FeaturedBooks() {
           {books.map((book) => (
             <Card key={book._id} className="overflow-hidden">
               <div className="aspect-[3/4] relative">
-                <img
+                <Image
                   src={book.imageUrl || "/placeholder-book.jpg"}
                   alt={book.title}
                   className="w-full h-full object-cover"

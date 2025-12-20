@@ -18,7 +18,7 @@ export default function Newsletter() {
       toast.success("Successfully subscribed to newsletter!");
       setEmail("");
     } catch (error) {
-      toast.error("Failed to subscribe. Please try again.");
+      toast.error(`Failed to subscribe. Please try again. ${error} `);
     } finally {
       setIsLoading(false);
     }

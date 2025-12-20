@@ -14,8 +14,11 @@ export async function GET() {
       success: true,
       feedbackArray,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Registration error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { error:error instanceof Error ?  error.message || "Registeration Errors !  " : "An error Occured " },
+      {status:500}
+    )
   }
 }

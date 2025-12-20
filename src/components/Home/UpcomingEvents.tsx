@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Calendar, MapPin } from "lucide-react";
+import Image from "next/image";
 
 interface Event {
   _id: string;
@@ -40,7 +41,7 @@ export default function UpcomingEvents() {
           {events.map((event) => (
             <Card key={event._id} className="overflow-hidden">
               <div className="aspect-video relative">
-                <img
+                <Image
                   src={event.imageUrl || "/placeholder-event.jpg"}
                   alt={event.title}
                   className="w-full h-full object-cover"

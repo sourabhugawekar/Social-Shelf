@@ -6,9 +6,9 @@ import { Button } from "../../components/ui/button";
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Upload } from "lucide-react";
 import FileUpload from "@/components/layouts/FileUpload";
 import { IKUploadResponse } from "imagekitio-next/dist/types/components/IKUpload/props";
+import Image from "next/image";
 
 interface Event {
   title: string;
@@ -43,18 +43,18 @@ export default function Events() {
     "Other",
   ];
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result as string);
-        // Here you would typically upload the image to your server/storage
-        // and get back the URL to store in newEvent.imageUrl
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setImagePreview(reader.result as string);
+  //       // Here you would typically upload the image to your server/storage
+  //       // and get back the URL to store in newEvent.imageUrl
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const HandleBannerImage = (response: IKUploadResponse) => {
     try {
@@ -63,7 +63,7 @@ export default function Events() {
       setImageUrl(response.url);
       setNewEvent({ ...newEvent, imageUrl: response.url });
     } catch (error) {
-      throw new Error("Something when Wrong Uploading the Cover Image !");
+      throw new Error(`Something when Wrong Uploading the Cover Image ! ${error} `);
     }
   };
 
@@ -258,7 +258,7 @@ export default function Events() {
               >
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                   {/* {imagePreview ? (
-                    <img
+                    <Image
                       src={imagePreview}
                       alt="Preview"
                       className="max-h-36 object-contain"
@@ -283,7 +283,7 @@ export default function Events() {
                 />
               </label>
               {imagePreview ? (
-                <img
+                <Image
                   src={imagePreview}
                   alt="Preview"
                   className="max-h-36 object-contain"

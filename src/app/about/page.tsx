@@ -3,12 +3,14 @@ import React from "react";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -43,7 +45,7 @@ export default function AboutPage() {
               enthusiasts.
             </p>
             <div className="mt-6 rounded-xl overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2090&q=80"
                 alt="Books on shelves"
                 className="w-full h-auto"
@@ -94,7 +96,7 @@ export default function AboutPage() {
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               <div className="bg-neutral-100 dark:bg-neutral-900 p-4 rounded-lg">
                 <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
                     alt="Team Member"
                     className="w-full h-full object-cover"
@@ -109,7 +111,7 @@ export default function AboutPage() {
               </div>
               <div className="bg-neutral-100 dark:bg-neutral-900 p-4 rounded-lg">
                 <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
                     alt="Team Member"
                     className="w-full h-full object-cover"
@@ -124,7 +126,7 @@ export default function AboutPage() {
               </div>
               <div className="bg-neutral-100 dark:bg-neutral-900 p-4 rounded-lg backdrop-blur-sm">
                 <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
                     alt="Team Member"
                     className="w-full h-full object-cover"

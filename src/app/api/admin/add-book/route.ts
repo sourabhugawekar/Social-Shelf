@@ -1,6 +1,7 @@
 import { ConnectDB } from "@/dbConfig/dbConfig";
 import Book from "@/models/Book.model";
 import BookId from "@/utils/BookId";
+import { MongooseError } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -29,8 +30,8 @@ export async function POST(request: NextRequest) {
       success: true,
       newBookAdded,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Book Add error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : "An error occurred" }, { status: 500 });
   }
 }

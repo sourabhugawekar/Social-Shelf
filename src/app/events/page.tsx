@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import Image from "next/image";
 
 interface Event {
   _id: string;
@@ -122,7 +123,7 @@ export default function EventsPage() {
                   <div className="relative h-56 overflow-hidden">
                     {event.imageUrl ? (
                       <>
-                        <img
+                        <Image
                           src={event.imageUrl}
                           alt={event.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

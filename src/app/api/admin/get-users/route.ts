@@ -16,8 +16,10 @@ export async function GET() {
       success: true,
       users,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Users fetching error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { error:error instanceof Error ?  error.message || "Error Geting Users " : "An error Occured " },
+     { status: 500 });
   }
 }

@@ -10,8 +10,6 @@ import {
   Gift,
   Users,
   Settings,
-  BarChart,
-  Upload,
   Contact,
   Calendar1,
   ClipboardList,
@@ -32,13 +30,16 @@ import FileUpload from "@/components/layouts/FileUpload";
 import { IKUploadResponse } from "imagekitio-next/dist/types/components/IKUpload/props";
 import Swal from "sweetalert2";
 import RegisteredEvents from "./registeredEvents";
+import Image from "next/image";
 
 interface Book {
+  _id: string;
   bookId: string;
   title: string;
   author: string;
   category: string;
   imageUrl?: string;
+  stock: number;
 }
 interface Donate {
   bookId: string;
@@ -104,17 +105,17 @@ export default function Admin() {
     HandleGetFeedbacks();
   }, []);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setSelectedImage(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (file) {
+  //     setSelectedImage(file);
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setImagePreview(reader.result as string);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const handleAddBook = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -202,7 +203,7 @@ export default function Admin() {
       setImagePreview(response.url);
       setCoverImageUrl(response.url);
     } catch (error) {
-      throw new Error("Something when Wrong Uploading the Cover Image !");
+      throw new Error(`Something when Wrong Uploading the Cover Image ! ${error} `);
     }
   };
 
@@ -379,7 +380,7 @@ export default function Admin() {
                       >
                         {/* <div className="flex flex-col items-center justify-center pt-5 pb-6">
                           {imagePreview ? (
-                            <img
+                            <Image
                               src={imagePreview}
                               alt="Preview"
                               className="max-h-36 object-contain"
@@ -409,7 +410,7 @@ export default function Admin() {
                         />
 
                         {imagePreview ? (
-                          <img
+                          <Image
                             src={imagePreview}
                             alt="Preview"
                             className="max-h-36 object-contain"

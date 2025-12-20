@@ -13,6 +13,7 @@ export async function GET() {
         console.log(authenticationParameters);
         return NextResponse.json(authenticationParameters);
     } catch (error) {
+        console.log(error);
         return NextResponse.error();
     }
 }

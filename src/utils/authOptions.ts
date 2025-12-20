@@ -1,16 +1,13 @@
-import type {NextAuthOptions} from "next-auth";
-import NextAuth,{DefaultSession} from "next-auth";
-import type { JWT } from "next-auth/jwt";
+import { ConnectDB } from "@/dbConfig/dbConfig";
+import User from "@/models/user.models";
+import bcrypt from "bcryptjs";
+import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import bcrypt from "bcryptjs";
-import { ConnectDB } from "@/dbConfig/dbConfig";
-import User from "@/models/user.models";
 // import clientPromise from "./mongodb";
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import { clientPromise, CustomMongoDBAdapter } from "@/dbConfig/custom-mongodb-adapter";
-import {ObjectId} from "mongodb"
+import { ObjectId } from "mongodb";
 
 interface ExtendedUser {
   id?:string;

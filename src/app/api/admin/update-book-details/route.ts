@@ -49,11 +49,11 @@ export async function PUT(request: Request) {
       success: true,
       book: updatedBook,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error updating book details:", error);
     return NextResponse.json(
-      { error: error.message || "Error updating book details" },
-      { status: 500 }
-    );
+      { error:error instanceof Error ?  error.message || "Error Updating book Details" : "An error Occured " },
+      {status:500}
+    )
   }
 }

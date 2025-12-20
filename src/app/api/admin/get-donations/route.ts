@@ -20,8 +20,10 @@ export async function GET() {
       success: true,
       donationsArray,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Donations fetching error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { error:error instanceof Error ?  error.message || "Error Get Donation book" : "An error Occured " },
+       { status: 500 });
   }
 }

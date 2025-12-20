@@ -1,13 +1,12 @@
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Eye, EyeOff, Mail, Lock } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { motion } from "framer-motion";
+import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { AxiosError } from "axios";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 const LoginPage = () => {
