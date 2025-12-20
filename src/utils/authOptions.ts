@@ -1,33 +1,34 @@
 import { ConnectDB } from "@/dbConfig/dbConfig";
 import User from "@/models/user.models";
+import clientPromise from "@/utils/mongodb";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import bcrypt from "bcryptjs";
-import type { NextAuthOptions } from "next-auth";
+import { type DefaultSession, type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-// import clientPromise from "./mongodb";
-import { clientPromise, CustomMongoDBAdapter } from "@/dbConfig/custom-mongodb-adapter";
-import { ObjectId } from "mongodb";
 
-interface ExtendedUser {
-  id?:string;
-  name?:string;
-  email?:string;
+declare module "next-auth" {
+  interface User {
+    role?: string;
+  }
+  interface Session extends DefaultSession {
+    user: {
+      id: string;
+      role?: string;
+    } & DefaultSession["user"];
+  }
 }
 
-
-// declare module "next-auth" {
-//   interface Session extends DefaultSession {
-//     user: {
-//       id: string;
-//       role?: string;
-//     } & DefaultSession["user"];
-//   }
-// }
+declare module "next-auth/jwt" {
+  interface JWT {
+    id: string;
+    role?: string;
+  }
+}
 
 export const authOptions: NextAuthOptions = {
-  // adapter: MongoDBAdapter(clientPromise),
-
+  adapter: MongoDBAdapter(clientPromise),
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -78,58 +79,22 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
-  adapter: CustomMongoDBAdapter(),
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
         token.name = user.name;
-        token.role = user?.role;
+        token.role = user.role;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        console.log(session);
         session.user.id = token.id as string;
         session.user.name = token.name as string;
-        session.user.role = token?.role as string;
+        session.user.role = token.role as string;
       }
       return session;
-    },
-  },
-  events:{
-     async createUser(userObj) {
-      const user = userObj?.user;
-      console.log("User is ",userObj)
-     const {id,name,email} = user as ExtendedUser;
-      const client = await clientPromise;
-      const db = client.db("Social");
-
-      // const userId = (user as any).id;
-      // const userName = (user as any).name;
-      // const userEmail = (user as any).email;
-      if(!id || !name ) {
-        console.log('No User with name is Found !');
-        return
-      }
-
-      await db.collection("users").updateOne(
-        { _id: new ObjectId(id) },
-        {
-          $set: {
-            fullname: name,
-            email: email,
-            password: "password", 
-            role: "student", 
-            updatedAt: new Date(),
-          },
-          $setOnInsert: {
-            createdAt: new Date(),
-          },
-        },
-        { upsert: true }
-      );
     },
   },
   pages: {
@@ -142,3 +107,5 @@ export const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
+
+
