@@ -1,4 +1,4 @@
-import NextAuth, { type NextAuthOptions } from "next-auth";
+import NextAuth, { type DefaultSession, type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
@@ -7,6 +7,25 @@ import { ConnectDB } from "@/dbConfig/dbConfig";
 import User from "@/models/user.models";
 import clientPromise from "@/utils/mongodb";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+
+declare module "next-auth" {
+  interface User {
+    role?: string;
+  }
+  interface Session extends DefaultSession {
+    user: {
+      id: string;
+      role?: string;
+    } & DefaultSession["user"];
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    id: string;
+    role?: string;
+  }
+}
 
 export const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
