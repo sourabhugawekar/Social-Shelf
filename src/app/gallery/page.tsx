@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 
 const categories = [
   "All",
@@ -283,7 +284,7 @@ export default function Gallery() {
                     e.stopPropagation();
                     handleRent(item.bookId);
                   }}
-                  disabled={isRenting || item.stock <= 0}
+                  disabled={isRenting || (item.stock ?? 0) <= 0}
                   className={`px-4 py-2 rounded-md text-sm font-medium ${
                     item.stock > 0
                       ? "bg-blue-600 text-white hover:bg-blue-700"
@@ -358,16 +359,16 @@ export default function Gallery() {
                     </div>
                     <div className="mt-6 flex justify-between items-center">
                       <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Available Stock: {item.stock}
+                        Available Stock: {item.stock ?? 0}
                       </span>
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           handleRent(item.bookId);
                         }}
-                        disabled={isRenting || item.stock <= 0}
+                        disabled={isRenting || (item.stock ?? 0) <= 0}
                         className={`px-6 py-2 rounded-md text-sm font-medium ${
-                          item.stock > 0
+                          (item.stock ?? 0) > 0
                             ? "bg-blue-600 text-white hover:bg-blue-700"
                             : "bg-gray-300 text-gray-500 cursor-not-allowed"
                         }`}
